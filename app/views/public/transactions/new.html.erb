@@ -1,1 +1,31 @@
-<h1>新規収支登録</h1>
+<div class="container">
+  <div class="row">
+    <div class = "col">
+      <h3>新規収支登録</h3><br>
+      <%= form_with(model: @transaction, url: transactions_path) do |f| %>
+      <div class="form-group">
+        <%= f.label :amount, "金額" %>
+        <%= f.number_field :amount %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :description, "詳細" %>
+        <%= f.text_field :description %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :transaction_type, "収支" %>
+        <%= f.radio_button :transaction_type , "収入" %>収入
+        <%= f.radio_button :transaction_type , "支出" %>支出
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :category_id, "カテゴリー" %>
+        <%= f.collection_select :category_id, Category.all, :id, :category_name %>
+      </div>
+
+        <%= f.submit "記録する" %>
+      <% end %>
+    </div>
+  </div>
+</div>
