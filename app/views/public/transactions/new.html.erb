@@ -9,6 +9,11 @@
       </div>
 
       <div class="form-group">
+        <%= f.label :category_id, "勘定科目" %>
+        <%= f.collection_select :category_id, Category.all, :id, :category_name %>
+      </div>
+
+      <div class="form-group">
         <%= f.label :description, "詳細" %>
         <%= f.text_field :description %>
       </div>
@@ -17,11 +22,6 @@
         <%= f.label :transaction_type, "収支" %>
         <%= f.radio_button :transaction_type , "収入" %>収入
         <%= f.radio_button :transaction_type , "支出" %>支出
-      </div>
-      
-      <div class="form-group">
-        <%= f.label :category_id, "カテゴリー" %>
-        <%= f.collection_select :category_id, Category.all, :id, :category_name %>
       </div>
 
         <%= f.submit "記録する" %>
